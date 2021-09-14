@@ -60,11 +60,32 @@ export function App() {
       setGame(newGameStateJSON)
     }
   }
-  async function handleRightClickCell
-    
+  async function handleRightClickCell(row: number, col: number) {
+    const checkingOptions = {
+      id: game.id,
+      row,
+      col,
+    }
+
+    const url = `https://minesweeper-api.herokuapp.com/games/${game.id}/flag`
+    const fetchOptions = {
+      method: 'POST',
+      headers: { 'content-type': 'application/json'},
+      body: JSON.stringify(checkingOptions),
+    }
+
+    const response = await fetch(url, fetchOptions)
+
+    if (response.ok) {
+      const newGameStateJSON = await response.json()
+
+      setGame(newGameStateJSON)
+    }
   }
     
-  }
+}
+    
+
   return (
     <main>
       <h1>The Mine Sweeper</h1>
@@ -78,7 +99,17 @@ export function App() {
         {Game.board.map(function (gameRow, row) {
           return gameRow.map(function (square, col) {
             return (
-              
+              <button 
+              onClick={function (event) {
+                event.preventDefault()
+
+                handleClickCell(row, col)
+              }}
+              onContextMenu={function (event) {
+                event.preventDefault()
+
+
+              }}
             )
           })
         })}
