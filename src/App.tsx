@@ -108,8 +108,12 @@ export function App() {
               onContextMenu={function (event) {
                 event.preventDefault()
 
-
+                handleClickCell(row, col)
               }}
+              key={col}
+              >
+                {square}
+                </button>
             )
           })
         })}
