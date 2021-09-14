@@ -65,5 +65,16 @@ export function App() {
   }
     
   }
-  return <div>Hello, World</div>
+  return (
+    <main>
+      <h1>The Mine Sweeper</h1>
+      <h2>
+        <button onClick={newEasyGame}>New GAme</button>
+      </h2>
+      <h3>There are {game.Mines}</h3>
+      <h3>The Game Number is {game.id}</h3>
+
+      <section class></section>
+    </main>
+  )
 }
