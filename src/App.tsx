@@ -74,7 +74,15 @@ export function App() {
       <h3>There are {game.Mines}</h3>
       <h3>The Game Number is {game.id}</h3>
 
-      <section class></section>
+      <section className="difficulty-0">
+        {Game.board.map(function (gameRow, row) {
+          return gameRow.map(function (square, col) {
+            return (
+              
+            )
+          })
+        })}
+      </section>
     </main>
   )
 }
