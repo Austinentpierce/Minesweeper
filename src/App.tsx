@@ -16,14 +16,14 @@ export function App() {
     state: undefined,
     mines: undefined,
   })
-  async function newGame () {
+  async function newGame() {
     const gameOptions = { difficulty: 0 }
 
     const url = 'https://minesweeper-api.herokuapp.com/games'
 
     const fetchOptions = {
       method: 'POST',
-      headers: { 'content-type': 'application/json'},
+      headers: { 'content-type': 'application/json' },
       body: JSON.stringify(gameOptions),
     }
 
@@ -37,18 +37,21 @@ export function App() {
       setGame(newGameStateJSON)
     }
   }
-
-  async function handleClickCell(row: number, col: number) {
+  async function handleCheckOrFlagCell(
+    row: number,
+    col: number,
+    action: 'check' | 'flag'
+  ) {
     const checkOptions = {
-      id: game.id, 
+      id: game.id,
       row,
       col,
     }
 
-    const url = `https://minesweeper-api.herokuapp.com/games/${game.id}/check`
+    const url = `https://minesweeper-api.herokuapp.com/games/${game.id}/${action}`
     const fetchOptions = {
       method: 'POST',
-      headers: { 'content-type': 'application/JSON'},
+      headers: { 'content-type': 'application/JSON' },
       body: JSON.stringify(checkOptions),
     }
 
@@ -60,60 +63,34 @@ export function App() {
       setGame(newGameStateJSON)
     }
   }
-  async function handleRightClickCell(row: number, col: number) {
-    const checkingOptions = {
-      id: game.id,
-      row,
-      col,
-    }
-
-    const url = `https://minesweeper-api.herokuapp.com/games/${game.id}/flag`
-    const fetchOptions = {
-      method: 'POST',
-      headers: { 'content-type': 'application/json'},
-      body: JSON.stringify(checkingOptions),
-    }
-
-    const response = await fetch(url, fetchOptions)
-
-    if (response.ok) {
-      const newGameStateJSON = await response.json()
-
-      setGame(newGameStateJSON)
-    }
-  }
-    
-}
-    
-
   return (
     <main>
       <h1>The Mine Sweeper</h1>
       <h2>
-        <button onClick={newEasyGame}>New GAme</button>
+        <button onClick={newGame}>New Game</button>
       </h2>
-      <h3>There are {game.Mines}</h3>
+      <h3>There are {game.mines}</h3>
       <h3>The Game Number is {game.id}</h3>
 
       <section className="difficulty-0">
-        {Game.board.map(function (gameRow, row) {
+        {game.board.map(function (gameRow, row) {
           return gameRow.map(function (square, col) {
             return (
-              <button 
-              onClick={function (event) {
-                event.preventDefault()
+              <button
+                onClick={function (event) {
+                  event.preventDefault()
 
-                handleClickCell(row, col)
-              }}
-              onContextMenu={function (event) {
-                event.preventDefault()
+                  handleCheckOrFlagCell(row, col, 'check')
+                }}
+                onContextMenu={function (event) {
+                  event.preventDefault()
 
-                handleClickCell(row, col)
-              }}
-              key={col}
+                  handleCheckOrFlagCell(row, col, 'check')
+                }}
+                key={col}
               >
                 {square}
-                </button>
+              </button>
             )
           })
         })}
