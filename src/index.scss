@@ -33,6 +33,9 @@ section button {
   background-color: yellow;
   border: black solid 1px;
 }
+section:hover {
+  color: whitesmoke;
+}
 main {
   height: 100vh;
   display: flex;

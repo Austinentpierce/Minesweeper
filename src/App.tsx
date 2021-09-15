@@ -118,7 +118,9 @@ export function App() {
           })
         })}
       </section>
-      <footer>Created by Austin Pierce</footer>
+      <footer>
+        <p>Created by Austin Pierce</p>
+      </footer>
     </main>
   )
 }
