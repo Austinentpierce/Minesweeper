@@ -13,8 +13,8 @@ export function App() {
       [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '],
       [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '],
     ],
-    state: undefined,
-    mines: undefined,
+    state: 'new',
+    mines: 10,
   })
   async function newGame() {
     const gameOptions = { difficulty: 0 }
@@ -69,7 +69,7 @@ export function App() {
       <h2>
         <button onClick={newGame}>New Game</button>
       </h2>
-      <h3>There are {game.mines}</h3>
+      <h3>There are {game.mines} mines</h3>
       <h3>The Game Number is {game.id}</h3>
 
       <section className="difficulty-0">
@@ -95,6 +95,9 @@ export function App() {
           })
         })}
       </section>
+      <footer>
+        <div className="madeby">Created by Austin Pierce</div>
+      </footer>
     </main>
   )
 }
