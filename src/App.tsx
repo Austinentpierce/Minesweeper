@@ -65,14 +65,37 @@ export function App() {
   }
   return (
     <main>
-      <h1>The Mine Sweeper</h1>
+      <div className="title">
+        <div className="words word-1">
+          <span>T</span>
+          <span>h</span>
+          <span>e</span>
+        </div>
+
+        <div className="words word-2">
+          <span>M</span>
+          <span>i</span>
+          <span>n</span>
+          <span>e</span>
+        </div>
+
+        <div className="words word-3">
+          <span>S</span>
+          <span>w</span>
+          <span>e</span>
+          <span>e</span>
+          <span>p</span>
+          <span>e</span>
+          <span>r</span>
+        </div>
+      </div>
       <h2>
         <button onClick={newGame}>New Game</button>
       </h2>
-      <h3>There are {game.mines} mines</h3>
+      <h3>There is {game.mines} mines on the board</h3>
       <h3>The Game Number is {game.id}</h3>
 
-      <section className="difficulty-0">
+      <section className="board">
         {game.board.map(function (gameRow, row) {
           return gameRow.map(function (square, col) {
             return (
@@ -95,9 +118,7 @@ export function App() {
           })
         })}
       </section>
-      <footer>
-        <div className="madeby">Created by Austin Pierce</div>
-      </footer>
+      <footer>Created by Austin Pierce</footer>
     </main>
   )
 }
