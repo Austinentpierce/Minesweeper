@@ -92,7 +92,6 @@ export function App() {
       <h2>
         <button onClick={newGame}>New Game</button>
       </h2>
-      <h3>There is {game.mines} mines on the board</h3>
       <h3>The Game Number is {game.id}</h3>
 
       <section className="board">

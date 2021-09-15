@@ -27,6 +27,9 @@ section {
   background-color: lightsalmon;
   box-shadow: black 5px 5px;
 }
+h3 {
+  text-shadow: yellow 1px 1px;
+}
 
 section button {
   flex-direction: row;
@@ -36,6 +39,10 @@ section button {
   box-shadow: 5px 5px black;
   background-color: yellow;
   border: black solid 1px;
+}
+button {
+  box-shadow: black 5px 5px;
+  border: yellow solid 0.2rem;
 }
 
 main {
@@ -59,6 +66,7 @@ footer {
   line-height: 1.5;
   margin: 0.6rem;
   text-align: center;
+  text-shadow: black 5px 5px;
 }
 
 .words span {
