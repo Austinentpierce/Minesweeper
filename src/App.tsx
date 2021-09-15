@@ -119,7 +119,7 @@ export function App() {
         })}
       </section>
       <footer>
-        <p>Created by Austin Pierce</p>
+        <p>Created by a Suncoast Developer</p>
       </footer>
     </main>
   )

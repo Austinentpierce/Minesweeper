@@ -23,6 +23,10 @@ body {
     rgba(252, 176, 69, 1) 100%
   );
 }
+section {
+  background-color: lightsalmon;
+  box-shadow: black 5px 5px;
+}
 
 section button {
   flex-direction: row;
@@ -33,9 +37,7 @@ section button {
   background-color: yellow;
   border: black solid 1px;
 }
-section:hover {
-  color: whitesmoke;
-}
+
 main {
   height: 100vh;
   display: flex;
@@ -48,6 +50,7 @@ main {
 }
 footer {
   margin-top: 5rem;
+  font-size: 1.5rem;
 }
 
 .words {
